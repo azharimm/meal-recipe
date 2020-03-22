@@ -1,5 +1,7 @@
+import React from 'react'
 import { Platform } from 'react-native'
 import Color from '../constants/Color'
+import { Ionicons } from '@expo/vector-icons'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
@@ -26,8 +28,35 @@ const MealsNavigator = createStackNavigator(
 
 const MealsFavTabNavigator = createBottomTabNavigator(
     {
-        Meals: MealsNavigator,
-        Favorites: FavoritesScreen
+        Meals: {
+            screen: MealsNavigator,
+            navigationOptions: {
+                tabBarIcon: (tabInfo) => {
+                    return <Ionicons
+                                name="ios-restaurant"
+                                size={25}
+                                color={tabInfo.tintColor} 
+                            />
+                }
+            }
+        },
+        Favorites: {
+            screen: FavoritesScreen,
+            navigationOptions: {
+                tabBarIcon: (tabInfo) => {
+                    return <Ionicons
+                            name="ios-star"
+                            size={25}
+                            color={tabInfo.tintColor}
+                             />
+                }
+            }
+        }
+    },
+    {
+        tabBarOptions: {
+            activeTintColor: Color.accentColor
+        }
     }
 )
 
