@@ -89,13 +89,29 @@ const MealsFavTabNavigator = Platform.OS == 'android' ?
 const FiltersNavigator = createStackNavigator(
     {
         Filters: FiltersScreen
+    },
+    {
+        defaultNavigationOptions: defaultStackNavOptions
     }
 )
 
 const mainNavigator = createDrawerNavigator(
     {
-        MealsFavs: MealsFavTabNavigator,
+        MealsFavs: {
+            screen: MealsFavTabNavigator,
+            navigationOptions: {
+                drawerLabel: 'Meals'
+            }
+        },
         Filters: FiltersNavigator
+    },
+    {
+        contentOptions: {
+            activeTintColor: Color.accentColor,
+            labelStyle: {
+                fontFamily: 'open-sans-bold'
+            }
+        }
     }
 )
 
