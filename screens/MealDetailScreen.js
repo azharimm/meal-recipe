@@ -1,4 +1,4 @@
-import React, { version } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
@@ -35,10 +35,9 @@ const MealDetailScreen = props => {
 }
 
 MealDetailScreen.navigationOptions = navigationData => {
-    const mealId = navigationData.navigation.getParam('mealId')
-    const selectedMeal = MEALS.find(meal => meal.id === mealId)
+    const mealTitle = navigationData.navigation.getParam('mealTitle')
     return {
-        headerTitle: selectedMeal.title,
+        headerTitle: mealTitle,
         headerRight: (
             <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
                 <Item title="Favorite" iconName='ios-star' onPress={() => console.log('Favorite')}/>
